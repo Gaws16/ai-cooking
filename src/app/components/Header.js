@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Logo from "./Logo";
 
 export default function Header() {
   const [isDark, setIsDark] = useState(false);
@@ -45,18 +46,7 @@ export default function Header() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <span
-              className={`text-4xl md:text-5xl animate-float delay-100 ${
-                isDark ? "text-purple-400" : "text-purple-600"
-              } drop-shadow-lg`}
-            >
-              🍽️
-            </span>
-            <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold animate-slide-down">
-              <span className="gradient-text text-shadow">CookTime</span>
-            </h1>
-          </div>
+          <Logo isDark={isDark} className="m-10" />
 
           <nav className="hidden md:flex items-center gap-8">
             {["Home", "Recipes", "About", "Contact"].map((item, index) => (
