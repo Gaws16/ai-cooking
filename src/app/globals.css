@@ -437,3 +437,58 @@ textarea:focus {
 .hero-content p:hover {
   transform: translateY(-5px);
 }
+
+/* Hero section overrides to prevent conflicts */
+.hero-heading {
+  font-size: clamp(2rem, 5vw, 4.5rem) !important;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
+  text-align: center;
+}
+
+.hero-paragraph {
+  font-size: clamp(1rem, 2vw, 1.5rem) !important;
+  line-height: 1.3;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+/* Fix any potential conflicts with animation classes */
+section.hero-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-text-container {
+  margin-bottom: 3rem !important;
+  width: 100% !important;
+  max-width: 800px !important;
+}
+
+.hero-buttons-container {
+  margin-top: 1rem !important;
+  width: auto !important;
+  max-width: 450px !important;
+  gap: 1.5rem !important;
+}
+
+/* Make buttons stand out more */
+.action-button {
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+  transition: all 0.4s ease;
+  border: none;
+  padding: 0.75rem 1.5rem !important;
+  font-size: 1.1rem !important;
+  min-width: 140px !important;
+}
+
+.action-button:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.4);
+}
