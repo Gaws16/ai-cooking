@@ -1,13 +1,17 @@
 "use client";
 
+import styles from "./RecipeActionButtons.module.css";
+
 export default function RecipeActionButtons() {
   return (
-    <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-      <button className="btn btn-primary flex-1 animate-shimmer overflow-hidden">
-        Find a Recipe!
+    <div className={styles.container}>
+      <button className={styles.recipeButton}>
+        <span className={styles.buttonIcon}>🍳</span>
+        <span className={styles.buttonText}>Find a Recipe!</span>
       </button>
-      <button className="btn btn-secondary flex-1 animate-shimmer overflow-hidden">
-        🎲 Surprise Me!
+      <button className={styles.surpriseButton}>
+        <span className={styles.buttonIcon}>🎲</span>
+        <span className={styles.buttonText}>Surprise Me!</span>
       </button>
     </div>
   );

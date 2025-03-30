@@ -1,45 +1,83 @@
 "use client";
 
+import Image from "next/image";
+import styles from "./Features.module.css";
+import { useState } from "react";
+
 export default function Features({ isLoaded }) {
+  const [hoveredCard, setHoveredCard] = useState(null);
+
+  const features = [
+    {
+      title: "Time-Based Recipes",
+      description:
+        "Find recipes that perfectly match your available cooking time.",
+      icon: "⏱️",
+      image:
+        "https://images.unsplash.com/photo-1564936281291-294551497d81?q=80&w=600&auto=format&fit=crop",
+    },
+    {
+      title: "Ingredient Matching",
+      description: "Use what you already have in your kitchen.",
+      icon: "🍳",
+      image:
+        "https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=600&auto=format&fit=crop",
+    },
+    {
+      title: "Dietary Preferences",
+      description: "Customize recipes to fit your dietary needs.",
+      icon: "🥗",
+      image:
+        "https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=600&auto=format&fit=crop",
+    },
+  ];
+
   return (
-    <section className="py-16">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 className="text-3xl font-bold mb-12">
-          <span className="gradient-text">Why use CookTime?</span>
+    <section className={styles.section}>
+      <div className={styles.container}>
+        <h2 className={styles.title}>
+          <span className={styles.gradientText}>Why use CookTime?</span>
         </h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
-          {[
-            {
-              title: "Time-Based Recipes",
-              description:
-                "Find recipes that perfectly match your available cooking time.",
-              icon: "⏱️",
-            },
-            {
-              title: "Ingredient Matching",
-              description: "Use what you already have in your kitchen.",
-              icon: "🍳",
-            },
-            {
-              title: "Dietary Preferences",
-              description: "Customize recipes to fit your dietary needs.",
-              icon: "🥗",
-            },
-          ].map((feature, index) => (
+        <div className={styles.cardsContainer}>
+          {features.map((feature, index) => (
             <div
               key={index}
-              className={`modern-card p-6 text-center ${
-                isLoaded
-                  ? `animate-slide-up delay-${(index + 3) * 100}`
-                  : "opacity-0"
-              }`}
+              className={styles.cardWrapper}
+              onMouseEnter={() => setHoveredCard(index)}
+              onMouseLeave={() => setHoveredCard(null)}
             >
-              <div className="flex justify-center mb-4">
-                <span className="text-4xl">{feature.icon}</span>
+              <div
+                className={`${styles.card} ${
+                  hoveredCard === index ? styles.cardHovered : ""
+                }`}
+              >
+                <div className={styles.imageContainer}>
+                  <div className={styles.overlay}></div>
+                  <Image
+                    src={feature.image}
+                    alt={feature.title}
+                    width={600}
+                    height={400}
+                    className={`${styles.image} ${
+                      hoveredCard === index ? styles.imageActive : ""
+                    }`}
+                  />
+                </div>
+
+                <div className={styles.content}>
+                  <div className={styles.iconContainer}>
+                    <span className={styles.icon}>{feature.icon}</span>
+                  </div>
+
+                  <div className={styles.textContainer}>
+                    <h3 className={styles.featureTitle}>{feature.title}</h3>
+                    <p className={styles.description}>{feature.description}</p>
+                  </div>
+                </div>
+
+                <div className={styles.cardBorder}></div>
               </div>
-              <h3 className="text-xl font-semibold mb-3">{feature.title}</h3>
-              <p className="text-muted-foreground">{feature.description}</p>
             </div>
           ))}
         </div>
