@@ -6,6 +6,7 @@ import Hero from "./components/Hero";
 import RecipeFinder from "./components/RecipeFinder";
 import Features from "./components/Features";
 import Footer from "./components/Footer";
+import RecipeResult from "./components/RecipeResult";
 
 export default function Home() {
   const [time, setTime] = useState(30);
@@ -17,6 +18,9 @@ export default function Home() {
     glutenFree: false,
   });
   const [isLoaded, setIsLoaded] = useState(false);
+  const [recipe, setRecipe] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const heroRef = useRef(null);
 
@@ -71,11 +75,16 @@ export default function Home() {
         setIngredients={setIngredients}
         dietaryPreferences={dietaryPreferences}
         handleDietaryChange={handleDietaryChange}
+        setRecipe={setRecipe}
+        setIsLoading={setIsLoading}
+        setError={setError}
       />
 
       <Features isLoaded={isLoaded} />
 
       <Footer />
+
+      <RecipeResult recipe={recipe} isLoading={isLoading} error={error} />
     </div>
   );
 }

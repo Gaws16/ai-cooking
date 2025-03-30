@@ -13,6 +13,9 @@ export default function RecipeFinder({
   setIngredients,
   dietaryPreferences,
   handleDietaryChange,
+  setRecipe,
+  setIsLoading,
+  setError,
 }) {
   return (
     <section id="find-recipes" className="py-20 bg-muted/30 dark:bg-muted/10">
@@ -43,7 +46,14 @@ export default function RecipeFinder({
             />
 
             {/* Action Buttons */}
-            <RecipeActionButtons />
+            <RecipeActionButtons
+              time={time}
+              ingredients={ingredients}
+              dietaryPreferences={dietaryPreferences}
+              setRecipe={setRecipe}
+              setIsLoading={setIsLoading}
+              setError={setError}
+            />
           </div>
         </div>
       </div>
